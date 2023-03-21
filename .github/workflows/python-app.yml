@@ -12,8 +12,8 @@ on:
 permissions:
   contents: read
 
-variables:
-  USERNAME: "Horace-Papoux"
+env:
+  USERNAME: Horace-Papoux
 
 jobs:
   build:
