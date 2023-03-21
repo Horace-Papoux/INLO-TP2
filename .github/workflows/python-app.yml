@@ -12,6 +12,9 @@ on:
 permissions:
   contents: read
 
+variables:
+  USERNAME: "Horace-Papoux"
+
 jobs:
   build:
 
@@ -37,3 +40,16 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+
+  build-docker-image:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Login to registry
+      run: echo ${{ secrets.PERSONAL_TOKEN }} | docker login ghcr.io -u $USERNAME --password-stdin
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag ghcr.io/$USERNAME/tp2:latest
+    - name: Push the image into the registry
+      run: docker push ghcr.io/$USERNAME/tp2:latest
