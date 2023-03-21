@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  USERNAME: Horace-Papoux
+  USERNAME: horace-papoux
 
 jobs:
   build:
