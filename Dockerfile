@@ -1,6 +1,8 @@
 FROM python:3.9
 
-RUN useradd -u 8877 papou
+RUN useradd papou
+
+RUN usermod -aG sudo papou
 
 USER papou
 
