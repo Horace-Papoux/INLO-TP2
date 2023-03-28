@@ -41,6 +41,10 @@ jobs:
     - name: Test with pytest
       run: |
         pytest --cov=. --cov-report=xml
+    - name: SonarCloud scan
+      uses: SonarSource/sonarcloud-github-action@master
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   build-docker-image:
 
