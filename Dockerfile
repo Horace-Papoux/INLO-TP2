@@ -2,8 +2,6 @@ FROM python:3.9
 
 RUN useradd papou
 
-RUN usermod -aG sudo papou
-
 USER papou
 
 WORKDIR /code
@@ -16,7 +14,9 @@ COPY ./README.md /code/README.md
 
 COPY ./src /code/src
 
-RUN sudo pip install /code
+USER root
+RUN pip install /code
+USER papou
 
 COPY ./controller /code/controller
 
